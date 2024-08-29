@@ -1,28 +1,30 @@
-from flask import Flask, request, render_template
-from werkzeug.utils import secure_filename
-from PIL import Image
+from flask import Flask, jsonify, render_template
 import numpy as np
-from model import load_model
+import tensorflow as tf
+from model import load_model, preprocess_image
 
 
 app = Flask(__name__)
 model = load_model()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        file = request.files['image']
-        if file:
-            filename = secure_filename(file.filename)
-            file.save(filename)
-            image = Image.open(filename).convert('L').resize((28, 28))
-            image = np.array(image) / 255.0
-            image = image.reshape(1, 28, 28, 1)
-            prediction = model.predict(image)
-            result = np.argmax(prediction)
-            return render_template('index.html', result=result)
-    return render_template('index.html', result=None)
+    return render_template('index.html')
+
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    path = 'templates\digit.png'
+    image = preprocess_image(path)
+    prediction = model.predict(image)
+    digit = np.argmax(prediction)
+    return jsonify({'digit': int(digit)})
+
+
+@app.route('/clear', methods=['POST'])
+def clear():
+    return jsonify({'status': 'cleared'})
 
 
 if __name__ == '__main__':
