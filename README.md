@@ -1,13 +1,25 @@
 # Handwritten Digit Recognition
 
-This project is a simple web application for recognizing handwritten digits using a neural network model trained on the MNIST dataset. The application allows users to upload images of digits, and the model predicts which digit is in the image.
+# Table of Contents
 
+1. [Introduction](#introduction)
+2. [Sample Images](#sample-images)
+3. [Technologies Used](#technologies-used)
+4. [Model Structure](#model-structure)
+5. [Installation](#installation)
+    - [Clone the Repository](#clone-the-repository)
+    - [Install Dependencies](#install-dependencies)
+    - [Run the Application](#run-the-application)
+    - [Access the Application](#access-the-application)
+6. [Dataset](#dataset)
+7. [Results](#results)
+
+## Introduction
+
+This project is a simple web application for recognizing handwritten digits using a neural network model trained on the MNIST dataset. The application allows users to draw images of digits, and the model predicts which digit is in the image.
+
+## Sample image
 ![Sample Images](app_image.png)
-
-## Features
-
-- **Handwritten Digit Recognition**: Upload an image of a digit, and the model predicts the digit.
-- **Accurate Predictions**: The model achieves 98.7% accuracy on the MNIST test dataset.
 
 ## Technologies Used
 
