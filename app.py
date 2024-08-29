@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, request, jsonify, render_template
 import numpy as np
 import tensorflow as tf
 from model import load_model, preprocess_image
@@ -15,8 +15,8 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    path = 'templates\digit.png'
-    image = preprocess_image(path)
+    file = request.files['file']
+    image = preprocess_image(file)
     prediction = model.predict(image)
     digit = np.argmax(prediction)
     return jsonify({'digit': int(digit)})
