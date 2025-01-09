@@ -84,3 +84,72 @@ The model is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/), 
 The model has been trained and tested with a final accuracy of **98.7%** on the test set of 10,000 images.
 
 ![model_result](model_result.png)
+
+---
+
+#  Telegram Bot
+
+This project is a Telegram bot that uses a deep learning model to recognize handwritten digits in images. The bot leverages a trained TensorFlow model to predict the number shown in a handwritten image.
+
+## Features
+
+- Recognizes handwritten digits (0 to 9) from images sent to the bot
+- Uses an advanced deep learning model for accurate digit recognition
+- Fast and easy to use
+
+## Setup Instructions
+
+To use the bot, follow these steps:
+
+### Installation Steps
+
+1. Clone the project from GitHub:
+
+   ```bash
+   git clone https://github.com/hopedeveloper0/handwritten_digit_recognition.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd handwritten_digit_recognition/
+   ```
+
+3. Install the required libraries:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Enter your Telegram bot token in the `get_token.py` file. You can get your token from [BotFather](https://core.telegram.org/bots#botfather).
+
+   ```python
+   TOKEN = 'your-telegram-bot-token'
+   ```
+
+5. Place the trained model (best performing model) in the path `handwritten_digit_recognition/best_model.keras`.
+
+### Running the Bot
+
+1. After completing the above steps, run the bot with:
+
+   ```bash
+   python app.py
+   ```
+
+2. Now you can interact with the bot on Telegram. Simply send an image of a handwritten digit on a white background, and the bot will send back the recognized digit.
+
+### How It Works
+
+- When you send the `/start` command, the bot will send a welcome message and ask you to upload an image of a handwritten digit.
+- Upon receiving the image, the bot processes the image and sends back the predicted digit.
+
+## Project Structure
+
+```
+telegram_bot/
+│
+├── app.py                     # Main Telegram bot code
+├── get_token.py               # Telegram bot token
+├── best_model.keras           # Trained model for handwritten digit recognition
+```
